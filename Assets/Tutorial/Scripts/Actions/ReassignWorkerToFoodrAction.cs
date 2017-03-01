@@ -7,7 +7,7 @@ public sealed class ReassignWorkerToFoodAction : ActionBase {
 
     public override void Execute(IAIContext context)
     {
-        var c = (TargetContext) context;
+        var c = (CityContext) context;
         List<HexInfo> h = new List<HexInfo>(c.targets.OrderBy(x => x.food));
         HexInfo bestFood = h[h.Count - 1];
         if (!c.workedHexInfos.Contains(bestFood))

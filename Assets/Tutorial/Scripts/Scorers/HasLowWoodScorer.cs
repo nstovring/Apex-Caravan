@@ -10,7 +10,7 @@
 
         public override float Score(IAIContext c, GameObject option)
         {
-            var context = (TargetContext)c;
+            var context = (CityContext)c;
             var targets = context.targets;
            // var index = Array.IndexOf(targets, option);
 

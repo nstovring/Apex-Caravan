@@ -8,7 +8,7 @@ public sealed class ReassignWorkerToWaterAction : ActionBase {
 
     public override void Execute(IAIContext context)
     {
-        var c = (TargetContext) context;
+        var c = (CityContext) context;
         List<HexInfo> h = new List<HexInfo>(c.targets.OrderBy(x => x.water));
         HexInfo bestWater = h[h.Count - 1];
         if (!c.workedHexInfos.Contains(bestWater))

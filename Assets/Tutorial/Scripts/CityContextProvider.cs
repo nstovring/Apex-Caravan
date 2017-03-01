@@ -9,7 +9,7 @@ namespace MyNameSpace1
     using Apex.AI;
 
 
-    public class TargetContextProvider : MonoBehaviour, IContextProvider
+    public class CityContextProvider : MonoBehaviour, IContextProvider
     {
         [SerializeField] private List<HexInfo> _targets;
         [SerializeField]
@@ -25,11 +25,11 @@ namespace MyNameSpace1
         private int _food = 10;
 
 
-        private TargetContext _context;
+        private CityContext _context;
 
         public void OnEnable()
         {
-            _context = new TargetContext(this.transform, _targets, _workedHexInfos, _oil + UnityEngine.Random.Range(0, 4), _wood , _water + UnityEngine.Random.Range(0, 4), _food + UnityEngine.Random.Range(0, 4));
+            _context = new CityContext(this.transform, _targets, _workedHexInfos, _oil + UnityEngine.Random.Range(0, 4), _wood , _water + UnityEngine.Random.Range(0, 4), _food + UnityEngine.Random.Range(0, 4));
         }
 
         public IAIContext GetContext(Guid aiId)
@@ -43,6 +43,13 @@ namespace MyNameSpace1
             _oil = _context.oil;
             _water = _context.water;
             _food = _context.food;
+            UpdateUI();
+        }
+
+        public TextMesh resourceDisplayTextMesh;
+        void UpdateUI()
+        {
+            resourceDisplayTextMesh.text = "Oil: " + _oil + "\n Water: " + _water + "\n Food: " + _food;
         }
     }
 

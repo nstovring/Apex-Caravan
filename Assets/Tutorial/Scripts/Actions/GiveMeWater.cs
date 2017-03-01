@@ -8,7 +8,7 @@
 
         public override void Execute(IAIContext c)
         {
-            var context = (TargetContext)c;
+            var context = (CityContext)c;
 
             context.water += 5;
 

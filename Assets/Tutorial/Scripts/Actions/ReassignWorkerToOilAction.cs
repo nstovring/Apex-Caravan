@@ -10,7 +10,7 @@ public sealed class ReassignWorkerToOilAction : ActionBase {
 
     public override void Execute(IAIContext context)
     {
-        var c = (TargetContext) context;
+        var c = (CityContext) context;
         List<HexInfo> h = new List<HexInfo>(c.targets.OrderBy(x => x.oil));
         HexInfo bestOil = h[h.Count - 1];
         if (!c.workedHexInfos.Contains(bestOil))

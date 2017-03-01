@@ -4,10 +4,10 @@
     using Apex.AI;
     using UnityEngine;
 
-    public sealed class TargetContext : IAIContext
+    public sealed class CityContext : IAIContext
     {
-        private HexInfo cityTile;
-        public TargetContext(Transform transform, List<HexInfo> targets, List<HexInfo> workedHexInfos, int oil, int wood, int water, int food)
+        public HexInfo cityTile;
+        public CityContext(Transform transform, List<HexInfo> targets, List<HexInfo> workedHexInfos, int oil, int wood, int water, int food)
         {
             this.self = transform;
             cityTile = targets[0];
