@@ -18,18 +18,14 @@
             this.wood = wood;
             this.water = water;
             this.food = food;
-            
-
         }
 
-        public int population = 2;
+        public int population = 1;
 
         public Transform self { get; private set; }
          public List<HexInfo> workedHexInfos { get; private set; }
 
     public List<HexInfo> targets { get; private set; }
-
-
 
         public int oil { get;  set; }
         public int wood { get;  set; }

@@ -29,7 +29,7 @@ namespace MyNameSpace1
 
         public void OnEnable()
         {
-            _context = new TargetContext(this.transform, _targets, _workedHexInfos, _oil, _wood, _water, _food);
+            _context = new TargetContext(this.transform, _targets, _workedHexInfos, _oil + UnityEngine.Random.Range(0, 4), _wood , _water + UnityEngine.Random.Range(0, 4), _food + UnityEngine.Random.Range(0, 4));
         }
 
         public IAIContext GetContext(Guid aiId)

@@ -9,8 +9,10 @@ public sealed class HasLowFoodScorer : ContextualScorerBase
     public override float Score(IAIContext _context)
     {
         TargetContext context = (TargetContext)_context;
+        score = (100f / context.food);
+        //Debug.Log(score + " Food");
         //var targets = context._surroundingHexCells;
-        return score = 100f / context.food;
+        return this.score;
     }
 }
 

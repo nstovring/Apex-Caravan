@@ -5,12 +5,14 @@
 
     public sealed class HasLowWaterScorer : ContextualScorerBase
 {
-
         public override float Score(IAIContext _context)
         {
-            TargetContext context = (TargetContext)_context;
-            //var targets = context._surroundingHexCells;
-            return score = 100f / context.water;
-        }
+           TargetContext context = (TargetContext)_context;
+        score = (100f / context.water);
+        //Debug.Log(score + " Water");
+
+        //var targets = context._surroundingHexCells;
+        return this.score;
+    }
 }
 

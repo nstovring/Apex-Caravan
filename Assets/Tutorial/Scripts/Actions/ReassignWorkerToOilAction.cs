@@ -12,14 +12,19 @@ public sealed class ReassignWorkerToOilAction : ActionBase {
     {
         var c = (TargetContext) context;
         List<HexInfo> h = new List<HexInfo>(c.targets.OrderBy(x => x.oil));
-        if (!c.workedHexInfos.Contains(h[h.Count - 1]))
+        HexInfo bestOil = h[h.Count - 1];
+        if (!c.workedHexInfos.Contains(bestOil))
         {
-            c.workedHexInfos.Add(h[h.Count - 1]);
+            c.workedHexInfos.Add(bestOil);
             if (c.population <= 0)
             {
                 c.workedHexInfos.RemoveAt(0);
+                //c.population++;
             }
             c.population--;
+            
+            Debug.DrawRay(bestOil.transform.position, bestOil.transform.up * 3, Color.black, 10);
+
             Debug.Log("Moved Worker " + h[h.Count - 1].oil);
         }
     }
