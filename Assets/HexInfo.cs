@@ -9,11 +9,12 @@ public class HexInfo : MonoBehaviour
 
     public bool isBeingWorkedOn;
 
+    public Renderer myRenderer;
     // Use this for initialization
     void Start()
     {
         int rand = Random.Range(0, 3);
-        Renderer myRenderer = GetComponent<Renderer>();
+        myRenderer = GetComponent<Renderer>();
         switch (rand)
         {
             case 0:
