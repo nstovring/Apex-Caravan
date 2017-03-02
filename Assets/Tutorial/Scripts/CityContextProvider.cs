@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using Apex.AI.Components;
 
-namespace MyNameSpace1
-{
 
     using System;
     using UnityEngine;
@@ -25,7 +23,7 @@ namespace MyNameSpace1
         private int _food = 10;
 
 
-        private CityContext _context;
+        public CityContext _context;
 
         public void OnEnable()
         {
@@ -53,5 +51,5 @@ namespace MyNameSpace1
         }
     }
 
-}
+
 
