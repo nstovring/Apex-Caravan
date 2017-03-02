@@ -9,8 +9,9 @@ namespace Apex.AI
 
     public static class AINameMap
     {
-		public static readonly Guid ResourceAI = new Guid("36716ae6-dceb-4e16-b993-cc272c9c6efe");
+		public static readonly Guid CaravanMovement = new Guid("86931780-a95e-4ad2-b38d-ab14eb6ceb7e");
 		public static readonly Guid ResourceManager = new Guid("1317e8c2-b881-4496-8619-c9e197a86f0e");
+		public static readonly Guid TradingManager = new Guid("762e0d3a-de32-41a7-b190-8164c629af0a");
 		public static readonly Guid Tutorial1 = new Guid("92cbf7ce-7e45-4fb0-9bca-b10db358b779");
 
     }
