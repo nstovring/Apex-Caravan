@@ -1,43 +1,79 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
+[System.Serializable]
+[ExecuteInEditMode]
 public class TerrainGenerator : MonoBehaviour
 {
 
-    public List<GameObject> terrainObjects;
-    public GameObject cube;
-	// Use this for initialization
-	public void Generate ()
-	{
-        terrainObjects = new List<GameObject>();
-	    float scale = transform.lossyScale.z;
-	    int scaledScale = (int) (scale/16f);
+    public Vector3 spawnPoint;
+    public GameObject groundPrefab;
+    public GameObject[] enviromentPrefabs;
+    public int prefabAmount;
+    public float scaleMax;
+    public float scaleMin;
+    [Range(0,10)]
+    public int treePercentage;
+    [Range(0, 10)]
+    public int rockPercentage;
+    [Range(0, 10)]
+    public int dunePercentage;
+    [Range(0, 10)]
+    public int cactusPercentage;
+    [Range(0, 10)]
+    public int collumnPercentage;
+    [Range(0, 10)]
+    public int concretePercentage;
 
-        for (int i = 0; i < 8; i++)
-	    {
-
-            for (int j = 0; j < 8; j++)
-	        {
-	            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                go.transform.parent = transform;
-	            go.transform.localPosition= Vector3.zero;
-                go.transform.localPosition += new Vector3(Random.Range(-scale/2,scale/2), transform.localPosition.y, Random.Range(-scale/2, scale/2));
-                terrainObjects.Add(go);
-                go.transform.localScale = new Vector3(Random.Range(0.01f, 0.1f) * scale, Random.Range(0.1f, 43f) * scale, Random.Range(0.01f, 0.1f) * scale);
+    private GameObject terrainGameObject;
+    private List<GameObject> objectsSpawned;
+    public void GenerateTerrain()
+    {
+        if (objectsSpawned != null && objectsSpawned.Count > 0)
+        {
+            foreach (var o in objectsSpawned)
+            {
+                DestroyImmediate(o);
             }
         }
-	}
-
-    public void Erase()
-    {
-        foreach (var terrainObject in terrainObjects)
+      
+        objectsSpawned = new List<GameObject>();
+        spawnPoint = transform.position;
+        float groundSize =  transform.localScale.z/2;
+        terrainGameObject = gameObject;
+        terrainGameObject.isStatic = true;
+        List<GameObject> enviromentList = WeightedList();
+        for (int i = 0; i < prefabAmount; i++)
         {
-            Destroy(terrainObject,1);
+            Quaternion randomQuaternion = Quaternion.Euler(new Vector3(0, Random.Range(0, 355), 0));
+            GameObject prefab = Instantiate(enviromentList[Random.Range(0, enviromentList.Count)],
+                new Vector3(Random.Range(spawnPoint.x - groundSize, spawnPoint.x + groundSize),
+                    spawnPoint.y,
+                    Random.Range(spawnPoint.z - groundSize, spawnPoint.z + groundSize)), randomQuaternion) as GameObject;
+            prefab.transform.localScale *= Random.Range(scaleMin, scaleMax)/1000;
+            prefab.transform.parent = terrainGameObject.transform;
+            objectsSpawned.Add(prefab);
+            prefab.isStatic = true;
         }
     }
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public List<GameObject> WeightedList()
+    {
+        List<GameObject> tempList = new List<GameObject>();
+
+        int[] weightInts = { treePercentage, treePercentage, rockPercentage, rockPercentage ,
+            rockPercentage , dunePercentage, dunePercentage, cactusPercentage, collumnPercentage,
+            collumnPercentage, concretePercentage};
+
+        for (int i = 0; i < weightInts.Length; i++)
+        {
+            for (int j = 0; j < weightInts[i]; j++)
+            {
+                tempList.Add(enviromentPrefabs[i]);
+            }
+        }
+
+        return tempList;
+    }
 }
