@@ -17,6 +17,5 @@ public class ReassignWorkers : ActionBase
                 c.workedHexInfos.Add(c.scoredHexes[c.scoredHexes.Count-i].option);
             }
         }
-        Debug.Log(c.workedHexInfos.Count);
     }
 }
