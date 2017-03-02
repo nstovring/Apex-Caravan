@@ -7,6 +7,7 @@
     public sealed class CityContext : IAIContext
     {
         public HexInfo cityTile;
+    public List<ScoredOption<HexInfo>> scoredHexes = new List<ScoredOption<HexInfo>>();
         public CityContext(Transform transform, List<HexInfo> targets, List<HexInfo> workedHexInfos, int oil, int wood, int water, int food)
         {
             this.self = transform;
@@ -23,7 +24,7 @@
         public int population = 1;
 
         public Transform self { get; private set; }
-         public List<HexInfo> workedHexInfos { get; private set; }
+         public List<HexInfo> workedHexInfos { get; set; }
 
     public List<HexInfo> targets { get; private set; }
 
