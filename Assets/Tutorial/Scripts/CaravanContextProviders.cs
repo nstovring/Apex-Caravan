@@ -21,7 +21,7 @@ public class CaravanContextProviders : MonoBehaviour, IContextProvider {
 
     public void OnEnable()
     {
-        _context = new CaravanContext(this.transform,this._knownCities);
+        //_context = new CaravanContext();
     }
 
     public IAIContext GetContext(Guid aiId)
