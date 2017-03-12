@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(TerrainGenerator))]
 public class HexInfo : MonoBehaviour
 {
     public int oil;
@@ -10,27 +11,33 @@ public class HexInfo : MonoBehaviour
     public bool isBeingWorkedOn;
 
     public Renderer myRenderer;
+    public TerrainGenerator myGenerator;
     // Use this for initialization
     void Start()
     {
         int rand = Random.Range(0, 3);
         myRenderer = GetComponent<Renderer>();
+        myGenerator = GetComponent<TerrainGenerator>();
         switch (rand)
         {
             case 0:
                 oil = Random.Range(3, 8);
-                myRenderer.material.color = Color.black;
                 break;
             case 1:
                 food = Random.Range(3, 8);
-                myRenderer.material.color = Color.green;
                 break;
             case 2:
                 water = Random.Range(3, 8);
-                myRenderer.material.color = Color.blue;
                 return;
         }
+        //if (myGenerator != null)
+        //{
+            myGenerator.oasisPercentage = water;
+            myGenerator.oilPercentage = oil;
+            myGenerator.fieldPercentage = food;
 
+            myGenerator.GenerateTerrain();
+        //}
 
     }
 	

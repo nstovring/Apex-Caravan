@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(TerrainGenerator))]
 public class TerrainGeneratorEditor : Editor {
     public override void OnInspectorGUI()
@@ -13,6 +14,11 @@ public class TerrainGeneratorEditor : Editor {
         if (GUILayout.Button("Generate Terrain"))
         {
             gen.GenerateTerrain();
+        }
+
+        if (GUILayout.Button("Erase Terrain"))
+        {
+            gen.EraseTerrain();
         }
     }
 }
