@@ -35,6 +35,8 @@ public class CaravanContextProvider : MonoBehaviour, IContextProvider {
     public int needForOilWeight = 1;
     public float _maxSpeed = 10;
     public float _maxTurnSpeed = 5;
+    public Transform _currentGoal;
+
     public void OnEnable()
     {
         _context = new CaravanContext(transform, _oil + UnityEngine.Random.Range(0, 4), _water + UnityEngine.Random.Range(0, 4), _food + UnityEngine.Random.Range(0, 4), _cities);
@@ -60,5 +62,6 @@ public class CaravanContextProvider : MonoBehaviour, IContextProvider {
         needForFood = _context.needForFood;
         needForWater = _context.needForWater;
         needForOil = _context.needForOil;
+        _currentGoal = _context.goal;
     }
 }

@@ -11,12 +11,16 @@ public class CaravanTurn : ActionBase
         myDir = new Vector3(myDir.x, 0, myDir.z);
         Vector3 cityDir = Vector3.Normalize(c.goal.position - c.self.position);
         cityDir = new Vector3(cityDir.x, 0, cityDir.z);
-        if(Vector3.Magnitude(cityDir - myDir) == 2f)
-        {
-            myDir += new Vector3(0.1f, 0, 0.1f);
-            myDir = Vector3.Normalize(myDir);
-        }
-        c.self.forward += Vector3.Normalize(cityDir - myDir) * 0.1f;
-        c.self.forward = Vector3.Normalize(c.self.forward);
+        //if (Vector3.Magnitude(cityDir - myDir) == 2f)
+        //{
+        //    myDir += new Vector3(0.1f, 0, 0.1f);
+        //    myDir = Vector3.Normalize(myDir);
+        //}
+
+        c.self.rotation = Quaternion.Lerp(c.self.rotation,Quaternion.LookRotation(cityDir),c.maxTurnSpeed);
+
+        //c.self.forward += Vector3.Normalize(cityDir - myDir) * 0.1f;
+        //c.self.forward = Vector3.Normalize(c.self.forward);
+        //c.self.LookAt(c.goal);
     }
 }

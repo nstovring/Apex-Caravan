@@ -9,7 +9,9 @@ public class Accel : ContextualScorerBase
 
         var c = (CaravanContext)context;
 
-        if (c.speed < c.maxSpeed*0.9)
+        //c.speed = Mathf.Clamp(c.speed, (c.speed + score)*Time.deltaTime, c.maxSpeed);
+
+        if (c.speed < c.maxSpeed*0.5)
         {
             return this.score;
         }
