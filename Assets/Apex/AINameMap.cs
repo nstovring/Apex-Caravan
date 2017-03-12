@@ -13,6 +13,8 @@ namespace Apex.AI
 		public static readonly Guid CaravanScanner = new Guid("7df27d05-c9d8-48a9-b4c1-62c335513eb4");
 		public static readonly Guid ResourceManager = new Guid("1317e8c2-b881-4496-8619-c9e197a86f0e");
 		public static readonly Guid ScannerAI = new Guid("6053cc65-d2e8-4bc9-89e1-d16e1a519dc6");
+		public static readonly Guid Steerer = new Guid("0e6793cc-851c-4427-8cb4-3f8886961838");
+		public static readonly Guid test = new Guid("12dffbe3-47a5-468d-9bb0-d4100b511965");
 		public static readonly Guid Tutorial1 = new Guid("92cbf7ce-7e45-4fb0-9bca-b10db358b779");
 
     }

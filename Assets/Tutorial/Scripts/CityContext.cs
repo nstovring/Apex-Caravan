@@ -33,7 +33,18 @@
         public int water { get;  set; }
         public int food { get;  set; }
 
-    }
+    public float foodTradeWilling;
+    public float waterTradeWilling;
+    public float oilTradeWilling;
+
+    public int GrowThreshhold;
+    public float oilBasePrice;
+    public float waterBasePrice;
+    public float foodBasePrice;
+    public float foodPrice;
+    public float oilPrice;
+    public float waterPrice;
+}
 
 
 

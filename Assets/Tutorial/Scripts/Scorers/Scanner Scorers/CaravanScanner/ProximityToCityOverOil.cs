@@ -14,7 +14,6 @@ public class ProximityToCityOverOil : ScannerCustomScorer<CityContextProvider> {
     public override float Score(IAIContext context, CityContextProvider option)
     {
         var c = (CaravanContext)context;
-        Debug.Log(option);
         Vector3 goal = option.transform.position;
         float distance = Vector3.Distance(goal, c.self.position);
         this.score = (c.oil / (distance / fuelPrUnit))*Weight;
